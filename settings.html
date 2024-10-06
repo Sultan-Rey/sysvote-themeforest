@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings Page</title>
+    <link rel="icon" type="image/x-icon" href="images/sysvote.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS-->
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="d-flex justify-content-between align-items-center p-2 header">
+        <!-- Logo and app name -->
+        <div class="d-flex align-items-center">
+            <img src="images/logo.png" alt="SysVote Icon" style="width: 40px; height: 40px; margin-right: 10px;">
+            <span style="font-size: 1.5rem; font-weight: bold;">SysVote</span>
+        </div>
+      
+        <!-- Right section: remaining time and icons -->
+        <div class="d-flex align-items-center">
+            <!-- Centered navigation tabs -->
+            <nav class="nav nav-pills">
+                <a class="nav-link mx-2" href="home.html">Home</a>
+                <a class="nav-link mx-2" href="voters.html">Voters</a>
+                <a class="nav-link mx-2" href="candidates.html">Candidates</a>
+                <a class="nav-link mx-2" href="districts.html">Districts</a>
+                <a class="nav-link mx-2" href="ballots.html">Ballots</a>
+                <a class="nav-link mx-2 active" href="settings.html">Settings</a>
+            </nav>
+            <!-- Separator -->
+            <div class="mx-3 separator"></div>
+            <!-- Time remaining box -->
+            <div class="px-3 py-2" id="countdown" style="background-color: #1E3A8A; color: white; border-radius: 5px; margin-right: 10px;">
+                Time Elapsed : <span id="hours">12</span>:<span id="minutes">00</span>:<span id="seconds">00</span>
+            </div>
+            <!-- Separator -->
+            <div class="mx-3 separator"></div>
+      
+            <div class="dropdown dropdown-optional">
+              <button class="btn dropdown-toggle" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fas fa-user"></i> User
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="userDropdown" id="user-dropdown-menu">
+                <li><a class="dropdown-item" href="#"><i class="fas fa-user-circle"></i> Profile</a></li>
+                <li><a class="dropdown-item" href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                <li><a class="dropdown-item" href="index.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+              </ul>
+            </div>
+            
+            <div class="dropdown dropdown-optional">
+              <button class="btn dropdown-toggle" id="notificationDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fas fa-bell"></i> Notifications <span class="notification-badge">3</span>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="notificationDropdown" id="notification-dropdown-menu">
+                <li><a class="dropdown-item" href="#"><i class="bi bi-envelope-fill"></i> New message from John
+                  <span class="text-muted d-block">5 minutes ago</span></a></li>
+                <li><a class="dropdown-item" href="#"><i class="bi bi-person-fill"></i> New user added
+                  <span class="text-muted d-block">10 minutes ago</span></a></li>
+                <li><a class="dropdown-item" href="#"><i class="bi bi-hand-thumbs-up"></i> You have voted for someone
+                  <span class="text-muted d-block">1 hour ago</span></a></li>
+              </ul>
+            </div>
+            <div class="dropdown d-lg-none">
+              <button class="btn dropdown-toggle" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fas fa-more"></i> Menu
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="menuDropdown" id="more-dropdown-menu">
+                <li><a class="dropdown-item" href="home.html"><i class="bi bi-home-fill"></i> Home</a></li>
+                <li><a class="dropdown-item" href="voters.html"><i class="bi bi-people-fill"></i> Voters</a></li>
+                <li><a class="dropdown-item" href="candidates.html"><i class="bi bi-hand-index-fill"></i> Candidates</a></li>
+                <li><a class="dropdown-item" href="districts.html"><i class="bi bi-map-fill"></i> Districts</a></li>
+                <li><a class="dropdown-item" href="ballots.html"><i class="fas fa-sign-out-alt"></i> Ballots</a></li>
+                <li><a class="dropdown-item" href="settings.html"><i class="bi bi-gear-fill"></i> Settings</a></li>
+              </ul>
+            </div>
+      
+        </div>
+      </header>
+
+    <!-- Info Bar -->
+  <div class="d-flex justify-content-between align-items-center info-bar">
+    <div class="d-flex">
+        <!-- Options Tab -->
+        <div id="options-tab" class="parallelogram bg-danger text-white d-flex align-items-center justify-content-center me-1 selected-tab" onclick="toggleTabs('options')">
+            <i class="bi bi-gear-fill me-2"></i><span>Options</span>
+        </div>
+        <!-- Users Tab -->
+        <div id="users-tab" class="parallelogram bg-light text-dark d-flex align-items-center justify-content-center party-members-tab" onclick="toggleTabs('users')">
+            <i class="bi bi-people-fill me-2"></i><span>Users</span>
+        </div>
+    </div>
+</div>
+
+
+    <!-- Settings Cards Section -->
+<div id="settings-container" class="container  mt-5">
+    <h3 class="pb-4">System Management Options</h3>
+    <div class="row">
+        <!-- Profile & Users -->
+        <div class="col-md-4">
+            <div class="card settings-card position-relative">
+                <i class="bi bi-people-fill settings-icon"></i>
+                <div class="card-body">
+                    <h5 class="card-title">Profiles & Users</h5>
+                    <p class="card-text">Authorization of users to edit and manage profiles.</p>
+                    <!-- Bouton pour activer l'expansion -->
+                    <button class="btn btn-link p-0 mt-3" data-bs-toggle="collapse" data-bs-target="#profileUsersOptions" aria-expanded="false" aria-controls="profileUsersOptions">
+                        <i class="bi bi-chevron-down"></i> Configure Options
+                    </button>
+                    <!-- Expansion inline -->
+                    <div class="collapse mt-3" id="profileUsersOptions">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="allowEditProfile">
+                            <label class="form-check-label" for="allowEditProfile">Allow users to edit their profiles</label>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="allowDeleteAccount">
+                            <label class="form-check-label" for="allowDeleteAccount">Allow users to permanently delete their account</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Timing Control -->
+        
+<div class="col-md-4">
+    <div class="card settings-card position-relative">
+        <i class="bi bi-clock-fill settings-icon"></i>
+        <div class="card-body">
+            <h5 class="card-title">Timing Control</h5>
+            <p class="card-text">Define vote time, subscription period, and deadlines.</p>
+            <!-- Bouton pour activer l'expansion -->
+            <button class="btn btn-link p-0 mt-3" data-bs-toggle="collapse" data-bs-target="#timingControlOptions" aria-expanded="false" aria-controls="timingControlOptions">
+                <i class="bi bi-chevron-down"></i> Configure Timing
+            </button>
+            <!-- Expansion inline -->
+            <div class="collapse mt-3" id="timingControlOptions">
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="launchVoteAfterSubscription">
+                    <label class="form-check-label" for="launchVoteAfterSubscription">Launch vote timing once subscription ends</label>
+                </div>
+                <div class="form-group mt-3">
+                    <label for="voteTiming">Timing</label>
+                    <input type="datetime-local" class="form-control" id="voteTiming">
+                </div>
+                <button class="btn btn-primary mt-2" id="setTimingButton">Set Timing</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <!-- Data Storage & Backup -->
+<div class="col-md-4">
+    <div class="card settings-card position-relative">
+        <i class="bi bi-cloud-fill settings-icon"></i>
+        <div class="card-body">
+            <h5 class="card-title">Data Storage & Backup</h5>
+            <p class="card-text">Connect to cloud storage, set backup frequency, and ensure data security.</p>
+            <!-- Bouton pour activer l'expansion -->
+            <button class="btn btn-link p-0 mt-3" data-bs-toggle="collapse" data-bs-target="#dataBackupOptions" aria-expanded="false" aria-controls="dataBackupOptions">
+                <i class="bi bi-chevron-down"></i> Configure Backup Settings
+            </button>
+            <!-- Expansion inline -->
+            <div class="collapse mt-3" id="dataBackupOptions">
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="connectToCloud">
+                    <label class="form-check-label" for="connectToCloud">Connect to cloud for saving data</label>
+                </div>
+                <div class="form-check form-switch mt-3">
+                    <input class="form-check-input" type="checkbox" id="dailyBackup">
+                    <label class="form-check-label" for="dailyBackup">Backup each day before vote launch</label>
+                </div>
+                <div class="form-check form-switch mt-3">
+                    <input class="form-check-input" type="checkbox" id="eraseData">
+                    <label class="form-check-label" for="eraseData">Erase all data after reset</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    <div class="row">
+        <!-- Security & Access -->
+        <div class="col-md-4">
+            <div class="card settings-card position-relative">
+                <i class="bi bi-shield-lock-fill settings-icon"></i>
+                <div class="card-body">
+                    <h5 class="card-title">Security & Access</h5>
+                    <p class="card-text">Enable MFA, control session timing, and manage user roles.</p>
+                    <!-- Bouton pour activer l'expansion -->
+                    <button class="btn btn-link p-0 mt-3" data-bs-toggle="collapse" data-bs-target="#securitiesOptions" aria-expanded="false" aria-controls="dataBackupOptions">
+                        <i class="bi bi-chevron-down"></i> Configure Security Options
+                    </button>
+                    <!-- Expansion inline -->
+                    <div class="collapse mt-3" id="securitiesOptions">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="BlockAccess">
+                            <label class="form-check-label" for="BlockAccess">Block access a while after 7  attemps failed</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Notifications Center -->
+        <div class="col-md-4">
+            <div class="card settings-card position-relative">
+                <i class="bi bi-bell-fill settings-icon"></i>
+                <div class="card-body">
+                    <h5 class="card-title">Notifications Center</h5>
+                    <p class="card-text">Enable notifications and configure notification settings.</p>
+                    <!-- Bouton pour activer l'expansion -->
+                    <button class="btn btn-link p-0 mt-3" data-bs-toggle="collapse" data-bs-target="#notificationAccess" aria-expanded="false" aria-controls="dataBackupOptions">
+                        <i class="bi bi-chevron-down"></i> Configure notification
+                    </button>
+                    <!-- Expansion inline -->
+                    <div class="collapse mt-3" id="notificationAccess">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="newUsers">
+                            <label class="form-check-label" for="newUsers">Notify admin when new users are connected</label>
+                        </div>
+                        <div class="form-check form-switch mt-3">
+                            <input class="form-check-input" type="checkbox" id="notifyChanges">
+                            <label class="form-check-label" for="notifyChanges">Notify system admin and assistants for any changes</label>
+                        </div>
+                        <div class="form-check form-switch mt-3">
+                            <input class="form-check-input" type="checkbox" id="notifyUsers">
+                            <label class="form-check-label" for="notifyUsers">Notify users 30 sec before vote ending</label>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+        </div>
+        <!-- Vote Parameters -->
+<div class="col-md-4">
+    <div class="card settings-card position-relative">
+        <i class="bi bi-clipboard-check-fill settings-icon"></i>
+        <div class="card-body">
+            <h5 class="card-title">Vote Parameters</h5>
+            <p class="card-text">Define country, ballot type, number of candidates, and subscription policies.</p>
+            <!-- Bouton pour activer l'expansion -->
+            <button class="btn btn-link p-0 mt-3" data-bs-toggle="collapse" data-bs-target="#voteParamsOptions" aria-expanded="false" aria-controls="voteParamsOptions">
+                <i class="bi bi-chevron-down"></i> Configure Vote Parameters
+            </button>
+            <!-- Expansion inline -->
+            <div class="collapse mt-3" id="voteParamsOptions">
+                <!-- Option 1: Include Congress Ballot -->
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="includeCongressBallot">
+                    <label class="form-check-label" for="includeCongressBallot">Include Congress ballot in the process</label>
+                </div>
+                
+                <!-- Option 2: Select Country -->
+                <div class="mt-3">
+                    <label for="countrySelect" class="form-label">Country</label>
+                    <select class="form-select" id="countrySelect" aria-label="Select country">
+                        <option value="us">United States</option>
+                        <option value="fr">France</option>
+                        <option value="uk">United Kingdom</option>
+                        <option value="de">Germany</option>
+                    </select>
+                    <button class="btn btn-primary mt-2">Define</button>
+                </div>
+                
+                <!-- Option 3: Age Restriction -->
+                <div class="mt-3">
+                    <label for="ageRestriction" class="form-label">Age Restriction</label>
+                    <input type="number" class="form-control" id="ageRestriction" placeholder="Enter minimum age">
+                    <button class="btn btn-primary mt-2">Define</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+
+<!-- Container for Users Options (hidden by default) -->
+<div id="users-options" class="container mt-5" style="display: none;">
+    <div class="container mt-4">
+        <!-- User Management Options -->
+        <div class="tabs">
+            <ul class="nav nav-tabs" id="userManagementTabs">
+                <li class="nav-item">
+                    <a class="nav-link active" id="user-list-tab" data-bs-toggle="tab" href="#userList">User List</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="add-user-tab" data-bs-toggle="tab" href="#addUser">Add Users</a>
+                </li>
+            </ul>
+            <div class="tab-content mt-3 bg-white p-3">
+                <!-- User List Tab -->
+                <div class="tab-pane fade show active" id="userList">
+                    <h3>User List</h3>
+                    <table id="userTable" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Complete Name</th>
+                                <th>Username</th>
+                                <th>Role</th>
+                                <th>Access</th>
+                                <th>Actions</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Example Row -->
+                            <tr>
+                                <td>John Doe</td>
+                                <td>johndoe</td>
+                                <td>Admin</td>
+                                <td>Candidats, Voters</td>
+                                <td>
+                                    <button class="btn btn-warning btn-sm">Edit</button>
+                                    <button class="btn btn-danger btn-sm">Delete</button>
+                                    
+                                </td>
+                                <td>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="switchActive" checked>
+                                        <label class="form-check-label" for="switchActive">Active</label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- Add more rows as needed -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Add Users Tab -->
+                <div class="tab-pane fade" id="addUser">
+                    <h3>Add Users</h3>
+                    <form>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="userId" class="form-label">User ID</label>
+                                <input type="text" class="form-control" id="userId" readonly required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="completeName" class="form-label">Complete Name</label>
+                                <input type="text" class="form-control" id="completeName" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="username" class="form-label">Username</label>
+                                <input type="text" class="form-control" id="username" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="password" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="confirmPassword" class="form-label">Confirm Password</label>
+                                <input type="password" class="form-control" id="confirmPassword" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="role" class="form-label">Role</label>
+                                <select class="form-select" id="role" required>
+                                    <option value="" disabled selected>Select Role</option>
+                                    <option value="Admin">Admin</option>
+                                    <option value="Assistant">Assistant</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="access" class="form-label">Access</label>
+                            <select multiple class="form-select" id="access" required>
+                                <option value="Candidats">Candidats</option>
+                                <option value="Voters">Voters</option>
+                                <option value="Settings">Settings</option>
+                                <option value="Vote">Vote</option>
+                                <option value="Districts">Districts</option>
+                            </select>
+                            <small class="form-text text-muted">Hold down the Ctrl (Windows) or Command (Mac) button to select multiple options.</small>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add User</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add more options as needed -->
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js" integrity="oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/countdown.js"></script>
+  <script>
+$(document).ready(function() {
+        $('#userTable').DataTable(); // Initialize the jQuery DataTable
+    });
+  </script>
+</body>
+
+</html>

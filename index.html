@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page de Login</title>
+  <link rel="icon" type="image/x-icon" href="images/sysvote.ico">
+  <link rel="stylesheet" href="css/login_styles.css">
+</head>
+<body>
+  <div class="wrapper">
+    <!-- Animate Background -->
+    <div class="background"></div>
+
+    <!-- Fixed Login container -->
+    <div class="login-container">
+      <!-- Logo en position absolute -->
+      <img src="images/logo.png" alt="Logo" class="logo">
+
+      <!-- Texte Time Left To Vote -->
+      <h2>Time Left To Vote</h2>
+
+      <!-- Div de décompte en forme de pill -->
+      <div class="countdown-pill" id="countdown">
+        <span id="hours">12</span>:<span id="minutes">00</span>:<span id="seconds">00</span>
+      </div>
+
+      <!-- Flèche descendante -->
+      <div>
+        <img src="images/arrow-down.gif" alt="Arrow Down" class="arrow-down">
+      </div>
+
+      <!-- Texte Enter your access code to vote -->
+      <p>Enter your access code to vote</p>
+
+      <!-- Formulaire d'accès avec les inputs du code -->
+      <form id="access-code-form">
+        <div class="code-inputs">
+          <input type="text" maxlength="1" class="code-input">
+          <input type="text" maxlength="1" class="code-input">
+          <input type="text" maxlength="1" class="code-input">
+          <input type="text" maxlength="1" class="code-input">
+          <input type="text" maxlength="1" class="code-input">
+          <input type="text" maxlength="1" class="code-input">
+        </div>
+        <button type="submit">Validate</button>
+      </form>
+
+      <!-- Séparateur -->
+      <hr class="separator">
+
+      <!-- Lien aide code oublié -->
+      <a href="#" class="forgot-code-link">Access code forgotten, help me?</a>
+    </div>
+
+   
+    
+  </div>
+ 
+  <script src="js/countdown.js"></script>
+  <script src="js/validateForm.js"></script>
+</body>
+
+</html>
