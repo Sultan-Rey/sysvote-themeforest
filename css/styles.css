@@ -26,722 +26,773 @@ C) Responsives
 /** ______________________ Common Styles **/
 
 body {
-    background-color: #F3F4F6;
-    color: #1E3A8A; /* Couleur du texte */
-  }
-  body,
-  html {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-  }
-
-  .container-fluid {
-    background-color: #f8f9fa; /* Light background to contrast the sections */
-    border-radius: 8px;
+  background-color: #F3F4F6;
+  color: #1E3A8A; /* Couleur du texte */
 }
+body,
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.container-fluid {
+  background-color: #f8f9fa; /* Light background to contrast the sections */
+  border-radius: 8px;
+}
+/* Preloader */
+.loader-wrapper {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(255, 255, 255, 0.8); /* Fond semi-transparent */
+display: flex;
+align-items: center;
+justify-content: center;
+z-index: 9999; /* S'assure que le loader est au-dessus du contenu */
+}
+
+.loader {
+border: 8px solid #f3f3f3; /* Couleur de fond */
+border-top: 8px solid #3498db; /* Couleur du spinner */
+border-radius: 50%;
+width: 60px; /* Taille du spinner */
+height: 60px; /* Taille du spinner */
+animation: spin 1s linear infinite; /* Animation de rotation */
+}
+
+@keyframes spin {
+0% { transform: rotate(0deg); }
+100% { transform: rotate(360deg); }
+}
+
+body.loaded .loader-wrapper {
+display: none; /* Masque le loader une fois le contenu chargé */
+}
+
 
 /* Header Text Styling */
 h3 {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #007bff;
-    margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #007bff;
+  margin-bottom: 1rem;
 }
 
 
 
 /* Information Bar Styling */
 .info-bar {
-    background-color: #f8f9fa; /* Light background for contrast f1f1f1 */
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    text-align: center;
+  background-color: #f8f9fa; /* Light background for contrast f1f1f1 */
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
 
 .parallelogram {
-    width: 150px;
-    height: 50px;
-    transform: skew(-20deg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 10px;
-    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover */
+  width: 150px;
+  height: 50px;
+  transform: skew(-20deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover */
 }
 
 .parallelogram span {
-    transform: skew(20deg); /* Adjusts text back to normal */
-    font-weight: bold;
-    font-size: 1rem;
+  transform: skew(20deg); /* Adjusts text back to normal */
+  font-weight: bold;
+  font-size: 1rem;
 }
 /* Cursor pointer for tabs */
 .parallelogram {
-    cursor: pointer; /* Change cursor to pointer when hovering over tabs */
+  cursor: pointer; /* Change cursor to pointer when hovering over tabs */
 }
 
 /* Additional hover effect for both tabs */
 .parallelogram:hover {
-    opacity: 0.8; /* Slightly change the opacity on hover */
+  opacity: 0.8; /* Slightly change the opacity on hover */
 }
 
 /* Specific hover effect for Party Members tab */
 .party-members-tab:hover {
-    background-color: #007bff; /* Change background on hover */
-    color: white; /* Change text color on hover */
+  background-color: #007bff; /* Change background on hover */
+  color: white; /* Change text color on hover */
 }
 
 .selected-tab {
-    background-color: #0056b3; /* Selected tab color */
-    color: white; /* Selected tab text color */
+  background-color: #0056b3; /* Selected tab color */
+  color: white; /* Selected tab text color */
 }
 
 .party-members-tab {
-    background-color: #f8f9fa; /* Default background */
-    color: #333; /* Default text color */
+  background-color: #f8f9fa; /* Default background */
+  color: #333; /* Default text color */
 }
 
 
 
 .header {
-    background-color: #f8f9fa; 
-    border-bottom: 10px solid #1E3A8A;
+  background-color: #f8f9fa; 
+  border-bottom: 10px solid #1E3A8A;
+  position: static;
 }
 .header .nav .nav-link {
-    color: #1E3A8A;
+  color: #1E3A8A;
 }
 .header .nav .nav-link.active{
-    background-color: #1E3A8A; 
-    color: white;
+  background-color: #1E3A8A; 
+  color: white;
+}
+.header .nav .nav-link i{
+  display: none;
 }
 .header .separator{
-    width: 1px; 
-    height: 40px; 
-    background-color: #1E3A8A;
+  width: 1px; 
+  height: 40px; 
+  background-color: #1E3A8A;
+}
+
+.header .navbrand img{
+  width: 40px; 
+  height: 40px; 
+  margin-right: 10px;
+}
+.header .navbrand span{
+  font-size: 1.5rem; font-weight: bold;
 }
 
 /* common styles for both dropdowns */
 .dropdown-menu {
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Ombre légère pour effet de profondeur */
-    padding: 10px;
-    background-color: #fff;
-    transition: all 0.3s ease-in-out; /* Transition pour un effet fluide */
-    width: 300px; /* Largeur du dropdown */
-    border: none; /* Retirer la bordure par défaut */
-  }
-  
-  .dropdown-menu.show {
-    opacity: 1;
-    transform: translateY(0); /* Apparition avec un effet */
-  }
-  
-  .dropdown-menu.hide {
-    opacity: 0;
-    transform: translateY(-20px); /* Disparition avec un effet de décalage */
-  }
-  
-  .dropdown-item {
-    padding: 10px 15px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    transition: background-color 0.3s ease; /* Survol fluide */
-  }
-  
-  .dropdown-item:hover {
-    background-color: #f0f0f0; /* Couleur de fond au survol */
-  }
-  
-  .dropdown-item i {
-    margin-right: 10px; /* Espace entre icône et texte */
-  }
-  
-  /* Styles spécifiques au menu utilisateur */
-  #user-dropdown-menu {
-    width: 250px; /* Plus petit pour le menu utilisateur */
-  }
-  
-  /* Styles spécifiques au menu de notifications */
-  #notification-dropdown-menu {
-    width: 350px; /* Un peu plus large pour le menu de notifications */
-  }
-  
-  /* Style des icônes et du texte dans le menu de notifications */
-  #notification-dropdown-menu .dropdown-item {
-    display: flex;
-    align-items: flex-start;
-  }
-  
-  #notification-dropdown-menu .dropdown-item i {
-    font-size: 18px;
-    color: #007bff; /* Couleur de l'icône */
-    margin-right: 12px;
-  }
-  
-  #notification-dropdown-menu .dropdown-item:hover i {
-    color: #0056b3; /* Changer la couleur de l'icône au survol */
-  }
-  
-  #notification-dropdown-menu .dropdown-item .text-muted {
-    font-size: 12px; /* Taille plus petite pour les textes secondaires */
-  }
-  
-  /* Styles pour le badge de notification */
-  .notification-badge {
-    background-color: #ff5722; /* Couleur rouge-orange */
-    color: white;
-    border-radius: 12px;
-    font-size: 12px;
-    padding: 3px 6px;
-    margin-left: auto; /* Aligne le badge à droite */
-  }
-  
-  
-  
-/** ______________________ Home **/
-    
-.card {
-  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Ombre légère pour effet de profondeur */
+  padding: 10px;
+  background-color: #fff;
+  transition: all 0.3s ease-in-out; /* Transition pour un effet fluide */
+  width: 300px; /* Largeur du dropdown */
+  border: none; /* Retirer la bordure par défaut */
 }
 
-  #map {
-      height: 400px;
-      margin-bottom: 30px;
-      overflow: hidden;
-    }
+.dropdown-menu.show {
+  opacity: 1;
+  transform: translateY(0); /* Apparition avec un effet */
+}
+
+.dropdown-menu.hide {
+  opacity: 0;
+  transform: translateY(-20px); /* Disparition avec un effet de décalage */
+}
+
+.dropdown-item {
+  padding: 10px 15px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s ease; /* Survol fluide */
+}
+
+.dropdown-item:hover {
+  background-color: #f0f0f0; /* Couleur de fond au survol */
+}
+
+.dropdown-item i {
+  margin-right: 10px; /* Espace entre icône et texte */
+}
+
+/* Styles spécifiques au menu utilisateur */
+#user-dropdown-menu {
+  width: 250px; /* Plus petit pour le menu utilisateur */
+}
+
+/* Styles spécifiques au menu de notifications */
+#notification-dropdown-menu {
+  width: 350px; /* Un peu plus large pour le menu de notifications */
+}
+
+/* Style des icônes et du texte dans le menu de notifications */
+#notification-dropdown-menu .dropdown-item {
+  display: flex;
+  align-items: flex-start;
+}
+
+#notification-dropdown-menu .dropdown-item i {
+  font-size: 18px;
+  color: #007bff; /* Couleur de l'icône */
+  margin-right: 12px;
+}
+
+#notification-dropdown-menu .dropdown-item:hover i {
+  color: #0056b3; /* Changer la couleur de l'icône au survol */
+}
+
+#notification-dropdown-menu .dropdown-item .text-muted {
+  font-size: 12px; /* Taille plus petite pour les textes secondaires */
+}
+
+/* Styles pour le badge de notification */
+.notification-badge {
+  background-color: #ff5722; /* Couleur rouge-orange */
+  color: white;
+  border-radius: 12px;
+  font-size: 12px;
+  padding: 3px 6px;
+  margin-left: auto; /* Aligne le badge à droite */
+}
+
+
+
+/** ______________________ Home **/
   
-    .row.g-2 {
-        display: flex;
-        align-items: stretch;
-    } 
-    /* Style pour aligner les cartes à la même hauteur */
+.card {
+overflow: hidden;
+}
+
+#map {
+    height: 400px;
+    margin-bottom: 30px;
+    overflow: hidden;
+  }
+
+  .row.g-2 {
+      display: flex;
+      align-items: stretch;
+  } 
+  /* Style pour aligner les cartes à la même hauteur */
 .home .card {
-    height: 100%;
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    justify-content: space-between;
-  }
+  height: 100%;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
-  .home .card-body {
-    flex-grow: 1; /* Permet à la card-body de s'étendre pour remplir toute la carte */
-  }
+.home .card-body {
+  flex-grow: 1; /* Permet à la card-body de s'étendre pour remplir toute la carte */
+}
+
+/* Limiter la hauteur des canvases pour éviter qu'ils ne prennent trop de place */
+canvas {
+  width: 100% !important;
   
-  /* Limiter la hauteur des canvases pour éviter qu'ils ne prennent trop de place */
-  canvas {
-    width: 100% !important;
-    
-    max-height: 200px;
-    margin: 0 auto; /* Centrer les graphs */
+  max-height: 250px;
+  margin: 0 auto; /* Centrer les graphs */
+}
+
+/* Fixer une hauteur minimale pour les cartes */
+.home .card {
+  min-height: 350px; /* Ajuste cette valeur selon la taille de la plus grande card */
+}
+
+
+  .panel {
+    background-color: #FFFFFF;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
   }
-  
-  /* Fixer une hauteur minimale pour les cartes */
-  .home .card {
-    min-height: 350px; /* Ajuste cette valeur selon la taille de la plus grande card */
-  }
-  
 
-    .panel {
-      background-color: #FFFFFF;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      margin-bottom: 30px;
-    }
-
-    .quick-link:hover{
-        font-weight: bold;
-        cursor: pointer;
-    }
-
-    .badge {
-      background-color: #EF4444;
-    }
-
-    h1 {
+  .quick-link:hover{
       font-weight: bold;
-    }
-   
+      cursor: pointer;
+  }
+
+  .badge {
+    background-color: #EF4444;
+  }
+
+  h1 {
+    font-weight: bold;
+  }
+ 
 /** ______________________ Voters & Candidates **/
 
-        /* General container padding and spacing */
+      /* General container padding and spacing */
 
 
 
 /* Voter List Styling */
 ul.list-group {
-    background-color: white;
-    border-radius: 8px;
-    padding: 1rem;
+  background-color: white;
+  border-radius: 8px;
+  padding: 1rem;
 }
 
 /* Voter List Item */
 .list-group-item {
-    background-color: #fff;
-    border: 1px solid #dee2e6;
-    border-radius: 8px;
-    transition: background-color 0.3s;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  transition: background-color 0.3s;
 }
 
 .list-group-item:hover {
-    background-color: #f1f3f5;
+  background-color: #f1f3f5;
 }
 
 /* Checkbox and Image */
 .list-group-item div {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .list-group-item img {
-    border: 2px solid #007bff;
+  border: 2px solid #007bff;
 }
 
 /* Buttons */
 button.btn {
-    font-size: 0.9rem;
-    padding: 0.4rem 0.8rem;
-    border-radius: 8px;
+  font-size: 0.9rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
 }
 
 /* Header Buttons */
 button.btn-secondary {
-    background-color: #6c757d;
+  background-color: #6c757d;
 }
 
 button.btn-success {
-    background-color: #28a745;
+  background-color: #28a745;
 }
 
 button.btn-primary {
-    background-color: #007bff;
+  background-color: #007bff;
 }
 
 /* Search bar */
 input#searchVoter {
-    border-radius: 8px;
-    border: 1px solid #ced4da;
-    padding: 0.5rem;
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+  padding: 0.5rem;
 }
 
 /* Social Security Input */
 #addVoterName {
-    width: 80%;
-    margin-right: 1rem;
-    border: 1px solid #ced4da;
-    border-radius: 8px;
+  width: 80%;
+  margin-right: 1rem;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
 }
 
 /* Voter Details Section */
 #voter-details .card {
-    border: 1px solid #ced4da;
-    border-radius: 8px;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
 }
 
 #voter-photo {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
 }
 
 #voter-access-code {
-    font-size: 1.2rem;
-    font-weight: bold;
-    letter-spacing: 3px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  letter-spacing: 3px;
 }
 
 #show-access-code {
-    margin-left: 10px;
+  margin-left: 10px;
 }
 
 #voter-has-voted {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
 }
 
 .bi-check-circle {
-    color: green;
+  color: green;
 }
 
 .bi-x-circle {
-    color: red;
+  color: red;
 }
 
 /* Hover effect for action buttons */
 button:hover {
-    opacity: 0.9;
-    cursor: pointer;
+  opacity: 0.9;
+  cursor: pointer;
 }
 
 
 /* Badge styles */
 .badge {
-    padding: 8px 15px;
-    font-size: 0.9rem;
-    font-weight: bold;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    background-color: #eaeaea; /* Subtle badge color */
-    color: #333;
+  padding: 8px 15px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  background-color: #eaeaea; /* Subtle badge color */
+  color: #333;
 }
 
 .badge i {
-    margin-right: 10px; /* Space between icon and text */
+  margin-right: 10px; /* Space between icon and text */
 }
 
 .separator {
-    width: 1px; /* Separator width */
-    height: 20px; /* Separator height */
-    background-color: #ccc; /* Separator color */
-    margin: 0 10px; /* Space around separator */
+  width: 1px; /* Separator width */
+  height: 20px; /* Separator height */
+  background-color: #ccc; /* Separator color */
+  margin: 0 10px; /* Space around separator */
 }
 
 .badge-info {
-    background-color: #aad1e6; /* Info badge color */
-    color: #064670; /* Info text color */
+  background-color: #aad1e6; /* Info badge color */
+  color: #064670; /* Info text color */
 }
 
 .badge-warning {
-    background-color: #f9dca3; /* Warning badge color */
-    color: #856404; /* Warning text color */
+  background-color: #f9dca3; /* Warning badge color */
+  color: #856404; /* Warning text color */
 }
 
 .badge-success {
-    background-color: #c8e6c9; /* Success badge color */
-    color: #2e7d32; /* Success text color */
+  background-color: #c8e6c9; /* Success badge color */
+  color: #2e7d32; /* Success text color */
 }
 
-
+#candidat-list  .card:hover{
+  cursor: pointer;
+  background: #eaeaea;
+}
 
 /** ______________________ Ballots **/
-        
+      
 
-        /* Information Bar Styling */
+      /* Information Bar Styling */
 
-        /* Switch Styling */
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 60px;
-            height: 34px;
-        }
+      /* Switch Styling */
+      .switch {
+          position: relative;
+          display: inline-block;
+          width: 60px;
+          height: 34px;
+      }
 
-        .switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
+      .switch input {
+          opacity: 0;
+          width: 0;
+          height: 0;
+      }
 
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            transition: .4s;
-            border-radius: 34px;
-            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
-        }
+      .slider {
+          position: absolute;
+          cursor: pointer;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: #ccc;
+          transition: .4s;
+          border-radius: 34px;
+          box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+      }
 
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 26px;
-            width: 26px;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
-            border-radius: 50%;
-            transition: .4s;
-        }
+      .slider:before {
+          position: absolute;
+          content: "";
+          height: 26px;
+          width: 26px;
+          left: 4px;
+          bottom: 4px;
+          background-color: white;
+          border-radius: 50%;
+          transition: .4s;
+      }
 
-        /* When the checkbox is checked */
-        input:checked+.slider {
-            background-color: #1E3A8A;
-            /* Color when switched on */
-        }
+      /* When the checkbox is checked */
+      input:checked+.slider {
+          background-color: #1E3A8A;
+          /* Color when switched on */
+      }
 
-        input:checked+.slider:before {
-            transform: translateX(26px);
-        }
+      input:checked+.slider:before {
+          transform: translateX(26px);
+      }
 
-        /* Sidebar styling */
-        .sidebar {
-            background-color: #1E3A8A;
-            color: white;
-            width: 24.5%;
-            padding: 50px;
-            height: 100vh;
-            background-image: url('../images/super-speed-background-blurred-stars-light-lines_370567-1422.avif');
-            /* Full height for the sidebar */
-            overflow-y: auto;
-            /* Allow scrolling if content exceeds height */
-        }
+      /* Sidebar styling */
+      .sidebar {
+          background-color: #1E3A8A;
+          color: white;
+          width: 24.5%;
+          padding: 50px;
+          height: 100vh;
+          background-image: url('../images/super-speed-background-blurred-stars-light-lines_370567-1422.avif');
+          /* Full height for the sidebar */
+          overflow-y: auto;
+          /* Allow scrolling if content exceeds height */
+      }
 
-        /* Sidebar tail styling */
-        .sidebar::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 380px; /* Move tail out to point towards content */
-            transform: translateY(-50%);
-            border-top: 20px solid transparent;
-            border-bottom: 20px solid transparent;
-            border-left: 20px solid #130f32; /* Match with sidebar background */
-        }
+      /* Sidebar tail styling */
+      .sidebar::before {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 365px; /* Move tail out to point towards content */
+          transform: translateY(-50%);
+          border-top: 20px solid transparent;
+          border-bottom: 20px solid transparent;
+          border-left: 20px solid #130f32; /* Match with sidebar background */
+      }
 
-        .sidebar .nav-link {
-            color: white;
-            margin-bottom: 10px;
-        }
+      .sidebar nav{
+              flex-direction: column !important;
+      }
+      .sidebar .nav-link {
+          color: white;
+          margin-bottom: 10px;
+      }
 
-        .sidebar .nav-link:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 5px;
-        }
+      .sidebar .nav-link:hover {
+          background-color: rgba(255, 255, 255, 0.1);
+          border-radius: 5px;
+      }
 
-        /* Card styling */
-        .candidate-card {
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 10px;
-            overflow: hidden;
-            position: relative;
-            padding: 10px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            cursor: grab;
-            transition: opacity 0.3s ease;
-        }
+      /* Card styling */
+      .candidate-card {
+          background-color: rgba(255, 255, 255, 0.9);
+          border-radius: 10px;
+          overflow: hidden;
+          position: relative;
+          padding: 10px;
+          text-align: center;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          cursor: grab;
+          transition: opacity 0.3s ease;
+      }
 
-        .candidate-card:hover {
-            background: #5268a5;
-        }
+      .candidate-card:hover {
+          background: #5268a5;
+      }
 
-        /* Container de l'image */
-        .candidate-image-container {
-            position: relative;
-            overflow: hidden;
-            border-radius: 10px;
-            border: 5px solid transparent;
-            background-clip: padding-box;
-        }
+      .candidate-card .candidate-slogan, .candidate-nbvote{
+         bottom: -100px;
+         color: rgba(255, 255, 255, 0.9);
+      }
+      
+      /* Container de l'image */
+      .candidate-image-container {
+          position: relative;
+          overflow: hidden;
+          border-radius: 10px;
+          border: 5px solid transparent;
+          background-clip: padding-box;
+      }
 
-        /* Image du candidat */
-        .candidate-image {
-            width: 80%;
-            height: 200px;
-            object-fit: cover;
-            border-top-left-radius: 50%;
-            /* Bordure arrondie pour le coin supérieur gauche */
-            border-bottom-right-radius: 50%;
-            /* Bordure arrondie pour le coin inférieur droit */
-            position: relative;
-        }
+      /* Image du candidat */
+      .candidate-image {
+          width: 80%;
+          height: 200px;
+          object-fit: cover;
+          border-top-left-radius: 50%;
+          /* Bordure arrondie pour le coin supérieur gauche */
+          border-bottom-right-radius: 50%;
+          /* Bordure arrondie pour le coin inférieur droit */
+          position: relative;
+      }
 
-        /* Bordures colorées : bleu en haut à gauche, rouge en bas à droite */
-        .candidate-image-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 50%;
-            height: 50%;
-            border-top: 5px solid blue;
-            border-left: 5px solid blue;
-        }
+      /* Bordures colorées : bleu en haut à gauche, rouge en bas à droite */
+      .candidate-image-container::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 50%;
+          height: 50%;
+          border-top: 5px solid blue;
+          border-left: 5px solid blue;
+      }
 
-        .candidate-image-container::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 50%;
-            height: 50%;
-            border-bottom: 5px solid red;
-            border-right: 5px solid red;
-        }
+      .candidate-image-container::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          width: 50%;
+          height: 50%;
+          border-bottom: 5px solid red;
+          border-right: 5px solid red;
+      }
 
-        /* Icône du parti en miniature */
-        .party-icon {
-            position: absolute;
-            bottom: 5px;
-            right: 5px;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            /* Icône en cercle */
-            border: 2px solid white;
-            /* Petit contour blanc autour de l'icône */
-            background-color: white;
-            /* Assure un bon contraste */
-        }
+      /* Icône du parti en miniature */
+      .party-icon {
+          position: absolute;
+          bottom: 5px;
+          right: 5px;
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          /* Icône en cercle */
+          border: 2px solid white;
+          /* Petit contour blanc autour de l'icône */
+          background-color: white;
+          /* Assure un bon contraste */
+      }
 
-        /* Nom du candidat en grosses lettres */
-        .candidate-name {
-            font-size: 2rem;
-            /* Taille du texte ajustée pour remplir l'espace */
-            font-weight: bold;
-            color: black;
-            margin: 0;
-            flex-grow: 1;
-            /* Prend l'espace restant sous l'image */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
+      /* Nom du candidat en grosses lettres */
+      .candidate-name {
+          font-size: 2rem;
+          /* Taille du texte ajustée pour remplir l'espace */
+          font-weight: bold;
+          color: black;
+          margin: 0;
+          flex-grow: 1;
+          /* Prend l'espace restant sous l'image */
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+      }
 
-        /* Style pour ballot-box */
+      /* Style pour ballot-box */
 .ballot-box {
-  border: 2px dashed #ccc;
-  padding: 40px;
-  width: 350px;
-  height: 300px;
-  text-align: center;
-  transition: background-color 0.2s;
-  cursor: pointer;
+border: 2px dashed #ccc;
+padding: 40px;
+width: 350px;
+height: 300px;
+text-align: center;
+transition: background-color 0.2s;
+cursor: pointer;
 }
 
 .ballot-box.hovered {
-  background-color: #f0f8ff;
-  border-color: #1E3A8A;
+background-color: #f0f8ff;
+border-color: #1E3A8A;
 }
 
 /* Style pour la sélection de candidat */
 .candidate-card.selected {
-  background-color: #f0f8ff;
-  border-color: #1E3A8A;
+background-color: #f0f8ff;
+border-color: #1E3A8A;
 }
 
 .cross {
-  display: none;
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  color: red;
-  font-size: 100px;
-  z-index: 10px;
-  cursor: pointer;
+display: none;
+position: absolute;
+top: 5px;
+right: 5px;
+color: red;
+font-size: 100px;
+z-index: 10px;
+cursor: pointer;
 }
 .candidate-card.disabled {
-  opacity: 0.5;
-  pointer-events: none;
+opacity: 0.5;
+pointer-events: none;
 }
 
 /*Ballot Center Styling */
 
 .ballot-center{
-  display: flex;
+display: flex;
 }
 
 
-        
-        /* Content styling */
-        .content {
-          width: 75.5%;
-          display: inline;
-            padding: 20px;
-            background-color: #e8ecf0;
-            height: 90vh;
-            /* 90% height for content */
-            overflow-y: auto;
-            /* Allow scrolling if content exceeds height */
-        }
+      
+      /* Content styling */
+      .content {
+        width: 75.5%;
+        display: inline;
+          padding: 20px;
+          background-color: #e8ecf0;
+          height: 90vh;
+          /* 90% height for content */
+          overflow-y: auto;
+          /* Allow scrolling if content exceeds height */
+      }
 
-        .ballot-icon {
-            width: 100px;
-            /* Larger size for the ballot box icon */
-            margin-bottom: 15px;
-            /* Space between icon and text */
-            color: #1E3A8A;
-            /* Icon color matching the theme */
-        }
+      .ballot-icon {
+          width: 100px;
+          /* Larger size for the ballot box icon */
+          margin-bottom: 15px;
+          /* Space between icon and text */
+          color: #1E3A8A;
+          /* Icon color matching the theme */
+      }
 
-     
+   
 .modal-header {
-  border-bottom: none;
-  text-align: center;
+border-bottom: none;
+text-align: center;
 }
 
 
 .form-check-input {
-  width: 20px;
-  height: 20px;
+width: 20px;
+height: 20px;
 }
 
 
 
 .modal-content {
-  border-radius: 10px;
-  padding: 20px;
+border-radius: 10px;
+padding: 20px;
 }
 
 .modal-title {
-  font-weight: bold;
-  font-size: 1.5rem;
-  color: #007bff;
+font-weight: bold;
+font-size: 1.5rem;
+color: #007bff;
 }
 
 .candidate-info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
 }
 
 .select-vote-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+display: flex;
+flex-direction: column;
+justify-content: flex-start;
+}
+
+.form-check-label {
+  font-size: 1.1rem;
 }
 
 
-#selectButton {
+/** Ballot live result **/
+
+#us-map {
+  height: 500px;
   width: 100%;
 }
 
-  .form-check-label {
-    font-size: 1.1rem;
-  }
-
-
-  /** Ballot live result **/
-  
-  #us-map {
-    height: 500px;
-    width: 100%;
-}
-
 .info {
-    padding: 6px 8px;
-    background: white;
-    background: rgba(255, 255, 255, 0.8);
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
+  padding: 6px 8px;
+  background: white;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
 }
 
 .info h4 {
-    margin: 0 0 5px;
-    color: #777;
+  margin: 0 0 5px;
+  color: #777;
 }
 
 .legend {
-    line-height: 18px;
-    color: #555;
+  line-height: 18px;
+  color: #555;
 }
 
 .legend i {
-    width: 18px;
-    height: 18px;
-    float: left;
-    margin-right: 8px;
-    opacity: 0.7;
+  width: 18px;
+  height: 18px;
+  float: left;
+  margin-right: 8px;
+  opacity: 0.7;
 }
 .candidate {
 text-align: center;
@@ -755,15 +806,15 @@ border-radius: 50%;
 
 /* Media Object ================================ */
 .media {
-  margin-bottom: 25px; }
-  .media .media-body {
-    color: #777;
-    font-size: 13px; }
-    .media .media-body .media-heading {
-      font-size: 16px;
-      font-weight: bold;
-      color: #333; }
-      
+margin-bottom: 25px; }
+.media .media-body {
+  color: #777;
+  font-size: 13px; }
+  .media .media-body .media-heading {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333; }
+    
 .progress-bar-container {
 flex-grow: 1;
 padding: 0 20px;
@@ -772,308 +823,359 @@ padding: 0 20px;
 .filters button {
 font-size: 14px;
 }
-  
+
 
 /*________________________________ Settings */
 
-        /* Card Styling */
-        .settings-card {
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 20px;
-            transition: transform 0.2s;
-        }
+      /* Card Styling */
+      .settings-card {
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+          border-radius: 10px;
+          padding: 20px;
+          margin-bottom: 20px;
+          transition: transform 0.2s;
+      }
 
-        .settings-card {
-    position: relative;
-    overflow: hidden;
-    /* Optional card styling for aesthetics */
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      .settings-card {
+  position: relative;
+  overflow: hidden;
+  /* Optional card styling for aesthetics */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .settings-icon {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    font-size: 80px;  /* Adjust the size to cover 20% of the card */
-    color: rgba(0, 0, 0, 0.1); /* Pale color to ensure text readability */
-    z-index: 0;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 80px;  /* Adjust the size to cover 20% of the card */
+  color: rgba(0, 0, 0, 0.1); /* Pale color to ensure text readability */
+  z-index: 0;
 }
 
 .card-body {
-    position: relative;
-    z-index: 1;
+  position: relative;
+  z-index: 1;
 }
 
-        .settings-card:hover {
-            transform: translateY(-5px);
-        }
+      .settings-card:hover {
+          transform: translateY(-5px);
+      }
 
-        .settings-card .collapse {
-    transition: max-height 0.2s ease-out;
+      .settings-card .collapse {
+  transition: max-height 0.2s ease-out;
 }
 
 .settings-card button.btn-link {
-    color: #007bff;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
+  color: #007bff;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
 }
 
 .settings-card button.btn-link i {
-    margin-right: 5px;
+  margin-right: 5px;
 }
 
 /** ________________________ Districts**/
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  .container {
-    width: 100%;
-    padding: 20px;
-    font-family: Arial, sans-serif;
-  }
-  
-  h2, h3, h4 {
-    margin-bottom: 15px;
-  }
-  
-  .search-bar {
-    margin-bottom: 20px;
-  }
-  
-  .search-bar input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .district-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-  }
-  
-  .district-table th, .district-table td {
-    padding: 12px 15px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .district-table th {
-    background-color: #f4f4f4;
-  }
-  
-  .district-table td {
-    background-color: #fff;
-  }
-  
-  .district-table .btn {
-    padding: 5px 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .district-table .btn-edit {
-    background-color: #4CAF50;
-    color: white;
-  }
-  
-  .district-table .btn-delete {
-    background-color: #f44336;
-    color: white;
-  }
-  
-  .btn-add {
-    background-color: #008CBA;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .district-map {
-    margin-top: 40px;
-  }
-  
-  #us-districts-map {
-    width: 100%;
-    height: 500px;
-    background-color: #e5e5e5;
-  }
-  
-  
-  .voter-management {
-    margin-top: 40px;
-  }
-  
-  .voters-list ul {
-    list-style-type: none;
-    margin-bottom: 20px;
-  }
-  
-  .voters-list li {
-    padding: 10px;
-    margin-bottom: 10px;
-    background-color: #f9f9f9;
-    border-radius: 4px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .voters-list .btn-assign {
-    background-color: #008CBA;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-
-  .voter-card {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 10px;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    background-color: #f9f9f9;
-    cursor: grab;
-  }
-
-  .voter-image {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-right: 10px;
-  }
-
-  .district-box {
-    border: 2px dashed #ccc;
-    border-radius: 8px;
-    padding: 10px;
-    margin-bottom: 20px;
-    background-color: #f1f1f1;
-  }
-
-  .district-dropzone {
-    min-height: 100px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 10px;
-    background-color: #fff;
-  }
-
-  .capacity-bar {
-    margin-top: 10px;
-  }
-
-  .progress {
-    height: 20px;
-  }
-
-  .progress-bar {
-    background-color: #4caf50;
-  }
-
-  
-
-  .district-stats {
-    margin-top: 40px;
-  }
-  
-  .stats {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .stat-box {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    padding: 20px;
-    border-radius: 4px;
-    text-align: center;
-    width: 30%;
-  }
-  
-  .stat-box h4 {
-    margin-bottom: 10px;
-  }
-  
-  /** Responsive Cases **/
- 
-@media (max-width: 1500px){
-  .sidebar {
-    width: 30%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+
+.container {
+  width: 100%;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+h2, h3, h4 {
+  margin-bottom: 15px;
+}
+
+.search-bar {
+  margin-bottom: 20px;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.district-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.district-table th, .district-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.district-table th {
+  background-color: #f4f4f4;
+}
+
+.district-table td {
+  background-color: #fff;
+}
+
+.district-table .btn {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.district-table .btn-edit {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.district-table .btn-delete {
+  background-color: #f44336;
+  color: white;
+}
+
+.btn-add {
+  background-color: #008CBA;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.district-map {
+  margin-top: 40px;
+}
+
+#us-districts-map {
+  width: 100%;
+  height: 500px;
+  background-color: #e5e5e5;
+}
+
+
+.voter-management {
+  margin-top: 40px;
+}
+
+.voters-list ul {
+  list-style-type: none;
+  margin-bottom: 20px;
+}
+
+.voters-list li {
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.voters-list .btn-assign {
+  background-color: #008CBA;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
+.voter-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  background-color: #f9f9f9;
+  cursor: grab;
+}
+
+.voter-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.district-box {
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 20px;
+  background-color: #f1f1f1;
+}
+
+.district-dropzone {
+  min-height: 100px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #fff;
+}
+
+.capacity-bar {
+  margin-top: 10px;
+}
+
+.progress {
+  height: 20px;
+}
+
+.progress-bar {
+  background-color: #4caf50;
+}
+
+
+
+.district-stats {
+  margin-top: 40px;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+}
+
+.stat-box {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 4px;
+  text-align: center;
+  width: 30%;
+}
+
+.stat-box h4 {
+  margin-bottom: 10px;
+}
+
+/** Responsive Cases **/
+
+@media (max-width: 1500px){
+.sidebar {
+  width: 30%;
+}
+.sidebar::before {
+      left: calc(30% - 10px); /* Ajuster pour centrer la queue */
+      top: 50%;
+  }
 .content{
-  width: 70%;
+width: 70%;
 }
 }
 
 @media (max-width: 1265px){
-  .sidebar {
-    width: 35%;
+.sidebar {
+  width: 35%;
 }
+.sidebar::before {
+      left: calc(35% - 10px); /* Ajuster pour centrer la queue */
+      top: 50%;
+  }
 .content{
-  width: 65%;
+width: 65%;
 }
 }
 
 @media (max-width: 1080px){
-  .sidebar {
-    width: 40%;
-}
-.content{
-  width: 60%;
-}
-}
- 
-  
-@media (max-width: 991px) {
-.nav{
-  display: none;
-}
 .sidebar {
+  width: 40%;
+}
+.sidebar::before {
+      left: calc(40% - 10px); /* Ajuster pour centrer la queue */
+      top: 50%;
+  }
+.content{
+width: 60%;
+}
+.header .nav .nav-link span{
   display: none;
+}
+.header .nav .nav-link i{
+  display: block;
+}
+#voters-container .vt-btn span{
+  display: none;
+}
 }
 
+
+@media (max-width: 991px) {
+.nav-pills{
+display: none;
+}
+.sidebar {
+         
+          width: 100%;
+          padding: 10px;
+          height: 200px;
+        
+          /* Allow scrolling if content exceeds height */
+}
+.sidebar .nav{
+              width: 200%;
+              display: flex;
+              gap:2%;
+              flex-direction: row !important;
+              flex-flow: nowrap;
+              align-items: center;
+              overflow-x: scroll;
+              overflow-y: hidden;
+      }
+      .sidebar::before {
+      left: 50%; /* Centrer horizontalement */
+      top: 100%; /* Positionner en bas */
+      transform: translate(-50%, 0); /* Centrer le tail sous la sidebar */
+      border-left: 20px solid #130f32; /* Couleur de la queue */
+      border-top: 20px solid transparent; /* Transparent pour faire un triangle */
+      border-bottom: 20px solid transparent; /* Transparent pour faire un triangle */
+  }
+      .candidate-image{
+           height: 100px;
+      }
+
+
 .ballot-center{
-  display: block;
+display: block;
 }
 .candidate-name{
-  font-size: 1rem;
+font-size: 1rem;
 }
 .content{
-  width: 100%;
-  display: block;
-  padding-top: 0;
+width: 100%;
+display: block;
+padding-top: 0;
 }
 
 }
 
 @media (max-width: 940px) {
-  .info-bar.d-flex{
-    overflow:scroll
-  }
-  
-  
-  }
+.info-bar.d-flex{
+  overflow:scroll
+}
+
+
+}
 
 @media (max-width: 768px) {
-  .dropdown-optional{
-   display: none;
-  }
-  
-  
-  }
+.dropdown-optional{
+ display: none;
+}
+.header .navbrand span{
+    display: none;
+}
+
+
+}

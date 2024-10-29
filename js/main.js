@@ -1,3 +1,28 @@
+// Configuration de la visibilité des liens sur home.html en fonction du rôle
+document.addEventListener("DOMContentLoaded", function () {
+    const userType = localStorage.getItem("userType");
+  
+    // Sélection des liens
+    const homeLink = document.getElementById("home-link");
+    const votersLink = document.getElementById("voters-link");
+    const candidatesLink = document.getElementById("candidates-link");
+    const districtsLink = document.getElementById("districts-link");
+    const settingsLink = document.getElementById("settings-link");
+    const ballotsLink = document.getElementById("ballots-link");
+  
+    if (userType === "voter") {
+      // Masquer les liens réservés aux électeurs pour les admins
+      homeLink.style.display = "none";
+      votersLink.style.display = "none";
+      candidatesLink.style.display = "none";
+      districtsLink.style.display = "none";
+      settingsLink.style.display = "none";
+  
+    } else if (userType === "admin") {
+        // Masquer les liens réservés aux admins pour les électeurs
+        ballotsLink.style.display = "none";
+    }
+  });
 
 /* ** Voters Module Scripts **/
 
@@ -144,7 +169,7 @@ document.querySelectorAll('.candidate-card, .mini-card').forEach(card => {
   // Récupérer l'image et le nom du candidat sélectionné
   const candidateImageSrc = selectedCandidate.querySelector('img').src;
         const candidateName = selectedCandidate.querySelector('.candidate-name').innerHTML;
-
+        document.querySelector('#candidateModal  .modal-title').innerHTML = "Make America Great Again";
         // Mettre à jour l'image et le nom dans la modal
         document.querySelector('#candidateModal .candidate-info img').src = candidateImageSrc;
         document.querySelector('#candidateModal .candidate-info h5').innerHTML = candidateName;

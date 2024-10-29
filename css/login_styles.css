@@ -133,6 +133,7 @@ button:hover {
   background-color: #e67e22;
 }
 
+
 /* Separator */
 .separator {
   border: 0;
@@ -235,12 +236,68 @@ input:focus {
   outline: none;
   border-color: #007bff; /* Couleur primaire */
 }
-@media (max-width: 414px) {
+
+@media (max-width: 1024px ) {
+     .login-container .admin-login-container {
+    padding: 1rem; /* Réduit le padding pour les petits écrans */
+    width: 50%; /* Ajuste la largeur pour être responsive */
+    max-width: 80%; /* S'assure que le conteneur s'adapte à l'écran */
+  }
+
+  
+}
+
+@media (max-width: 768px ) {
+    .login-container, .admin-login-container {
+    padding: 1rem; /* Réduit le padding pour les petits écrans */
+    width: 70%; /* Ajuste la largeur pour être responsive */
+    max-width: 75%; /* S'assure que le conteneur s'adapte à l'écran */
+  }
+
+  .admin-login-container {
+    margin-top: 1rem; /* Ajoute un espacement entre les conteneurs si nécessaire */
+  }
+  .login-container {
+    padding: 1rem; /* Réduit le padding pour les petits écrans */
+  }
+}
+@media (max-width: 414px ) {
+    .login-container, .admin-login-container {
+    padding: 1rem; /* Réduit le padding pour les petits écrans */
+    width:88%; /* Ajuste la largeur pour être responsive */
+    max-width: 100%; /* S'assure que le conteneur s'adapte à l'écran */
+  }
   .code-input {
     font-size: 18px; /* Taille de police encore plus petite */
     padding: 6px; /* Réduction du padding */
     min-width: 25px; /* Largeur minimale */
     max-width: 35px; /* Largeur maximale */
   }
+    h2 {
+    font-size: 1rem; /* Réduit la taille du texte */  
+    margin-top: 30px;
+  }
+
+  .countdown-pill {
+    font-size: 1.2rem; /* Réduit la taille du texte du décompte */
+    padding: 0.3rem 0.5rem; /* Ajuste le padding */
+  }
+
+  .logo {
+    width: 80px; /* Réduit la largeur du logo pour qu'il s'intègre mieux */
+    height: auto; /* Garde le ratio de l'image */
+    top: -30px; /* Ajuste la position si nécessaire */
+    
+  }
+
   
+}
+
+
+
+
+.error {
+    background-color: red;
+    color: white;
+    font-weight: bold;
 }
